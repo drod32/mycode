@@ -3,7 +3,7 @@
 """Alta3 Research.... 
     Exploring using panda to create dataframes and output graphs"""
 
-import pandas as pd
+import pandas as panda
 
 def main():
     # define name of .xls file
@@ -12,7 +12,7 @@ def main():
     # create a DataFrame (DF) object. 
     # because we did not specify a sheet
     # only the first sheet was read into the DF
-    movies = pd.read_excel(excel_file)
+    movies = panda.read_excel(excel_file)
 
     # show the first five rows of our DF
     # DF has a 5 rows and 25 columns (index by integer)
@@ -20,7 +20,7 @@ def main():
 
     # Choose the first column "title" as
     # index(index=0)
-    movie_sheet1 = pd.read_excel(excel_file, sheet_name=0, index_col=0)
+    movie_sheet1 = panda.read_excel(excel_file, sheet_name=0, index_col=0)
 
     # DF has 5 rows and 24 columns (indexed by title)
     # print the top 10 movies in the dataframe
