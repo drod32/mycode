@@ -7,7 +7,11 @@ def showInstructions():
     #print a main menu and the commands
     print('''
     RPG Game
-    ========
+
+    To win the game you must find the key, the potion, and escape to the garden
+
+    ==============
+
     Commands:
       go [direction]
       get [item]
@@ -33,13 +37,25 @@ inventory = []
 rooms = {
 
             'Hall' : {
-                  'south' : 'Kitchen'
+                  'south' : 'Kitchen',
+                  "east" : "Dining Room",
+                  "item" : "key"
                 },
 
             'Kitchen' : {
-                  'north' : 'Hall'
-                }
+                  'north' : 'Hall',
+                  "item" : "monster",
+                  },
 
+            "Dining Room" : {
+                    "west" : "Hall",
+                    "south" : "Garden",
+                    "item" : "potion"
+                 },
+
+            "Garden" : { 
+                "north" : "Dining Room"
+                }
          }
 
 # start the player in the Hall
@@ -88,5 +104,14 @@ while True:
         else:
             #tell them they can't get it
             print('Can\'t get ' + move[1] + '!')
+
+    ## If a player enters a room with a monster
+    if 'item' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['item']:
+        print('A monster has got you... GAME OVER!')
+        break
+
+    if currentRoom == "Garden" and "key" in inventory and "potion" in inventory:
+        print("You escaped the house with the keys and potion... YOU WIN!!!")
+        break
 
 
